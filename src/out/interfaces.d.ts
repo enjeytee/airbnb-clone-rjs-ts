@@ -10,6 +10,6 @@ export interface ItfProps {
             reviewCount: number;
         };
         location: string;
-        openSpots: number;       
+        openSpots: number;
     };
-};
+}

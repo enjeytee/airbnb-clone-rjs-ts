@@ -1,19 +1,27 @@
 import React from "react";
-import ks from "../images/katie-zaferes.png";
-import si from "../images/star.png";
+import { ItfProps } from "../interfaces.jsx";
 
-const Card = (): JSX.Element => {
+const Card = (props: ItfProps): JSX.Element => {
+    const { title, description, price, coverImg, stats, location, openSpots } = props.item;
+    const { rating, reviewCount } = stats;
+    let badgeText = "";
+    if (!openSpots) {
+        badgeText = "SOLD OUT";
+    } else if (location === "Online") {
+        badgeText = "ONLINE";
+    };
     return (
         <div className="card">
-            <img src={ks} className="card--image"/>
-            <div>
-                <img src={si} className="card--star" />
-                <span>5.0</span>
-                <span className="gray">(6) • </span>
-                <span className="gray">USA</span>
+            {badgeText && <div className="card--badge">{badgeText}</div>}
+            <img src={`/images/${coverImg}`} className="card--image"/>
+            <div className="card--stats">
+                <img src={"/images/star.png"} className="card--star" />
+                <span>{rating}</span>
+                <span className="gray">({reviewCount}) • </span>
+                <span className="gray">{location}</span>
             </div>
-            <p>Life Lessons with Katie Zaferes</p>
-            <p><span className="bold">From $136</span> / person</p>
+            <p className="card--title">{title}</p>
+            <p className="card--price"><span className="bold">From ${price}</span> / person</p>
         </div>
     );
 };
