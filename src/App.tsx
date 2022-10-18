@@ -6,8 +6,8 @@ import Card from "./components/Card";
 const App = (): JSX.Element => {
     return (
         <div>
-            <NavBar />
-            <Hero />
+            {/* <NavBar /> */}
+            {/* <Hero /> */}
             <Card />
         </div>
     );
